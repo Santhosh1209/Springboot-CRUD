@@ -23,7 +23,7 @@ public class EntityController {
     public List<Entities> view(){
         return entityService.getUsers();
     }
-    @PostMapping
+    @PostMapping()
     public void newRegister(@RequestBody Entities entity) {
         // @RequestBody ensures that the json blob that is required is obtained via the entity object
         entityService.addNewEntity(entity);

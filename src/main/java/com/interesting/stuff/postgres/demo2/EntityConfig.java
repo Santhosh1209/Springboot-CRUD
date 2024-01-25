@@ -9,6 +9,9 @@ import java.awt.*;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+
+import static java.time.Month.*;
+
 @Configuration
 public class EntityConfig {
     @Bean
@@ -22,21 +25,22 @@ public class EntityConfig {
               "Kaiji",
               "kaiji@gmail.com",
                     "Male",
-                    LocalDate.of(2001, Month.AUGUST,22),
+                    LocalDate.of(2001, AUGUST,22),
                     "Japan"
             );
-            Entities Kurosawa = new Entities(
-                    "Densetsu",
-                    "Kurosawa",
-                    "kaiji@gmail.com",
+
+            Entities Toua = new Entities(
+                    "Tokuchi",
+                    "Toua",
+                    "toua@gmail.com",
                     "Male",
-                    LocalDate.of(2001, Month.AUGUST,22),
+                    LocalDate.of(2003, MARCH,8),
                     "Japan"
             );
 
             // saveAll() saves the data into the database
             entitiesRepository.saveAll(
-                    List.of(Kaiji,Kurosawa)
+                    List.of(Kaiji,Toua)
             );
         };
     }
