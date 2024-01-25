@@ -1,10 +1,10 @@
 package com.interesting.stuff.postgres.demo2;
 
+import jakarta.persistence.Entity;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,5 +39,18 @@ public class EntityService {
             throw new IllegalStateException("student with id " + id + "does not exist");
         }
         entitiesRepository.deleteById(id);
+    }
+    @Transactional
+    // used to get setters and getters directly
+    public Entities editEntity(int id, String newEmail) {
+        Optional<Entities> optionalEntity = entitiesRepository.findById(id);
+        if (optionalEntity.isPresent()) {
+            Entities entity = optionalEntity.get();
+            entity.setEmail(newEmail);
+            return entitiesRepository.save(entity);
+        }
+        else{
+            throw new IllegalStateException("Entry with " + id + " isn't available!");
+        }
     }
 }

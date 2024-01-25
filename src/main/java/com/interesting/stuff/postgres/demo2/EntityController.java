@@ -28,9 +28,14 @@ public class EntityController {
         // @RequestBody ensures that the json blob that is required is obtained via the entity object
         entityService.addNewEntity(entity);
     }
-    @DeleteMapping(path = "{id}")
+    @DeleteMapping(path = "/{id}")
     // stuff inside path -> used for identification in order to delete it
     public void entitydelete(@PathVariable("id") int id){
         entityService.deleteEntity(id);
+    }
+    @PutMapping(path = "/{id}")
+    // so, while giving the link it should be given like : http://localhost:8080/view/1?email=fukumoto@gmail.com
+    public Entities editEntity(@PathVariable("id") int id, @RequestParam(value="email") String email){
+        return entityService.editEntity(id,email);
     }
 }
