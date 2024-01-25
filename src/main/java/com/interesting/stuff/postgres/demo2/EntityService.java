@@ -32,4 +32,12 @@ public class EntityService {
         entitiesRepository.save(entity);
         System.out.println(entity);
     }
+
+    public void deleteEntity(int id) {
+        boolean exists = entitiesRepository.existsById(id);
+        if (exists != true){
+            throw new IllegalStateException("student with id " + id + "does not exist");
+        }
+        entitiesRepository.deleteById(id);
+    }
 }

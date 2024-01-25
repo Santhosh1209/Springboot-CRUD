@@ -28,4 +28,9 @@ public class EntityController {
         // @RequestBody ensures that the json blob that is required is obtained via the entity object
         entityService.addNewEntity(entity);
     }
+    @DeleteMapping(path = "{id}")
+    // stuff inside path -> used for identification in order to delete it
+    public void entitydelete(@PathVariable("id") int id){
+        entityService.deleteEntity(id);
+    }
 }
